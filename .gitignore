@@ -1,0 +1,15 @@
+# 医療系L2データや中間生成物を絶対に持ち込まないためのガード
+*.mp4
+*.m4a
+*.wav
+*.pdf
+*.docx
+*.pptx
+*.xlsx
+*_recording.*
+*_audio.*
+.DS_Store
+node_modules/
+intermediate/
+context/
+mtg/

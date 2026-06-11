@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>CanPass｜自治体向けサービス提案（たたき v0.1）</title>
+<style>
+  :root{
+    --navy:#0B2E4F; --navy2:#15436E; --teal:#1B9AAA; --teal-l:#E6F4F5;
+    --orange:#F2802E; --ink:#1C2B36; --muted:#5A6B78; --line:#D8E0E6; --bg:#F4F7F9; --white:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;}
+  body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;color:var(--ink);background:#0a1722;overflow:hidden;}
+  .deck{position:relative;width:100vw;height:100vh;}
+  .slide{
+    position:absolute;inset:0;display:none;flex-direction:column;
+    padding:6vh 7vw;background:var(--bg);
+    animation:fade .35s ease;
+  }
+  .slide.active{display:flex;}
+  @keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+  .kicker{color:var(--teal);font-weight:700;font-size:1.05rem;letter-spacing:.08em;margin-bottom:.6rem;}
+  h1{font-size:3.0rem;line-height:1.25;color:var(--navy);}
+  h2{font-size:2.15rem;line-height:1.3;color:var(--navy);margin-bottom:1.4rem;border-left:8px solid var(--orange);padding-left:.7rem;}
+  h3{font-size:1.25rem;color:var(--navy2);margin-bottom:.4rem;}
+  p{font-size:1.2rem;line-height:1.7;color:var(--ink);}
+  .lead{font-size:1.5rem;line-height:1.6;}
+  ul{margin:.4rem 0 0 1.2rem;}li{font-size:1.18rem;line-height:1.7;margin:.35rem 0;}
+  .muted{color:var(--muted);}
+  .tag{display:inline-block;background:var(--teal-l);color:var(--teal);border:1px solid var(--teal);
+    border-radius:999px;padding:.18rem .8rem;font-size:.95rem;font-weight:700;margin:.2rem .3rem .2rem 0;}
+  .note{background:#FFF6EE;border:1px solid var(--orange);border-radius:10px;padding:1rem 1.2rem;margin-top:1.2rem;}
+  .note p{font-size:1.02rem;color:#8a4a14;}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.6rem;}
+  .card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.3rem;box-shadow:0 2px 10px rgba(11,46,79,.05);}
+  .card .dept{color:var(--orange);font-weight:700;font-size:.95rem;margin:.2rem 0 .5rem;}
+  .card p{font-size:1.0rem;line-height:1.55;}
+  .big{font-size:1.35rem;}
+  .steps{counter-reset:s;list-style:none;margin-left:0;}
+  .steps li{counter-increment:s;padding-left:2.6rem;position:relative;margin:.6rem 0;}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:.1rem;width:1.8rem;height:1.8rem;
+    background:var(--navy);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem 2.4rem;}
+  .cover{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 60%,var(--teal) 130%);color:#fff;justify-content:center;}
+  .cover h1{color:#fff;}
+  .cover .kicker{color:#9fe0e6;}
+  .cover .meta{margin-top:2rem;font-size:1.1rem;color:#cfe2ee;line-height:1.9;}
+  .cover .stamp{margin-top:1.6rem;display:inline-block;border:1px solid rgba(255,255,255,.4);border-radius:8px;padding:.5rem .9rem;font-size:.95rem;color:#ffd9bd;}
+  .foot{position:absolute;bottom:2.4vh;left:7vw;right:7vw;display:flex;justify-content:space-between;align-items:center;font-size:.85rem;color:var(--muted);border-top:1px solid var(--line);padding-top:.6rem;}
+  .conf{color:var(--orange);font-weight:700;}
+  .nav{position:fixed;bottom:2vh;right:2vw;z-index:20;display:flex;gap:.4rem;}
+  .nav button{background:var(--navy);color:#fff;border:none;border-radius:6px;width:34px;height:34px;font-size:1rem;cursor:pointer;opacity:.85;}
+  .nav button:hover{opacity:1;}
+  .counter{position:fixed;bottom:2.4vh;left:2vw;z-index:20;font-size:.9rem;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:6px;padding:.2rem .6rem;}
+  .em{color:var(--orange);font-weight:700;}
+  .tealtext{color:var(--teal);font-weight:700;}
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+  <!-- 1 表紙 -->
+  <section class="slide cover active">
+    <div class="kicker">CanPass ｜ 自治体向けサービス提案</div>
+    <h1>がん・難病と共に働く在宅ワーカー × AI で<br>自治体の「両立支援」と「事務負担軽減」を同時に解く</h1>
+    <div class="meta">
+      たたき台 v0.1 ／ 2026年6月<br>
+      位置づけ：6/10 ①祝迫会長 経営・B2G戦略MTG ②イマクリエ商談 の合意に基づく自治体向けサービス案
+    </div>
+    <div class="stamp">⚠ 社名・サービス名・価格・体制はいずれも想定値（要確定）／社外提示前に要精査</div>
+  </section>
+
+  <!-- 2 ワンライナー -->
+  <section class="slide">
+    <div class="kicker">売り込みの軸</div>
+    <h2>ひとつの仕組みで、自治体の2つの宿題を同時に解く</h2>
+    <p class="lead">「治療と仕事の<span class="em">両立支援</span>」と「現場の<span class="em">事務過多</span>」を、<br><span class="tealtext">同じ仕組み</span>で一度に解決するBPO。</p>
+    <ul>
+      <li>担い手は、がんや難病を経験しながら働く意欲のある在宅ワーカー。</li>
+      <li><span class="em">施策の"担い手"そのものが政策メッセージになる。</span></li>
+    </ul>
+    <div class="foot"><span>CanPass ｜ 自治体向けサービス提案 v0.1</span><span class="conf">L2機密・関係者限定</span></div>
+  </section>
+
+  <!-- 3 背景・課題 -->
+  <section class="slide">
+    <div class="kicker">提案のフック</div>
+    <h2>背景：自治体側の課題</h2>
+    <ul>
+      <li>がん・難病の治療と仕事の<span class="em">両立支援</span>は関心テーマ。一方で「何ができるか」の具体策に乏しい。</li>
+      <li>離職の背景は多くの場合「両立できると知らない／情報が届かない／メンタルの不安」。<span class="muted">本人の意欲の問題ではない。</span></li>
+      <li>自治体の現場は<span class="em">慢性的な事務過多</span>。短期・変動業務を直接雇用で賄うのは難しい。</li>
+    </ul>
+    <div class="note"><p>→「働きたいが従来型の勤務が難しい層」を在宅ワーカー化し、自治体の事務を外部BPOで受けることで、両課題を同時に解消。</p></div>
+    <div class="foot"><span>CanPass ｜ 自治体向けサービス提案 v0.1</span><span class="conf">L2機密・関係者限定</span></div>
+  </section>
+
+  <!-- 4 CanPassとは -->
+  <section class="slide">
+    <div class="kicker">信頼の根拠</div>
+    <h2>CanPass とは</h2>
+    <div class="grid2">
+      <div>
+        <h3>担い手</h3>
+        <p>がん・難病（IBD等）を経験した人材を主戦力とする在宅BPO。福岡拠点の共同創業者（がん経験・現在は安定）と共同推進。</p>
+      </div>
+      <div>
+        <h3>柔軟なチーム設計</h3>
+        <p>品質は担保しつつ、治療スケジュールや体調変動に合わせて働ける体制（硬直的な時間拘束にしない）。</p>
+      </div>
+      <div>
+        <h3>AI活用</h3>
+        <p>作業ログ・品質チェック・タスク配分をAIで標準化し、品質とスピードを担保。</p>
+      </div>
+      <div>
+        <h3>パイロット実績</h3>
+        <p>文字起こしで、がん経験ワーカーの平均アウトプットが<span class="em">一般の約2倍</span>水準を確認<span class="muted">（参考値）</span>。</p>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:1rem;font-size:1rem;">※外部出口として、製薬・保険・医療など親和性の高い企業との将来連携も視野（戦略仮説）。</p>
+    <div class="foot"><span>CanPass ｜ 自治体向けサービス提案 v0.1</span><span class="conf">L2機密・関係者限定</span></div>
+  </section>
+
+  <!-- 5 サービスメニュー -->
+  <section class="slide">
+    <div class="kicker">部署別の切り口 ／ 単独でも組合せでも提供可</div>
+    <h2>自治体向けサービスメニュー（A〜D）</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>A. 両立支援プログラム運営支援</h3>
+        <div class="dept">健康増進課／保健所／がん対策・健康づくり</div>
+        <p>両立支援の情報発信・相談導線づくり、対象者の在宅就労機会の提供、イベント/セミナー運営。"当事者が担い手"の説得力。</p>
+      </div>
+      <div class="card">
+        <h3>B. 就労困難者向け 在宅ワーク提供</h3>
+        <div class="dept">福祉課／障がい者・就労支援／生活支援</div>
+        <p>体調に合わせて働ける在宅ワークを提供。自治体は雇用せずに就労機会創出の実績を得られる。</p>
+      </div>
+      <div class="card">
+        <h3>C. 事務作業・データ入力BPO（AI活用）</h3>
+        <div class="dept">DX推進課／総務／各課の繁忙業務</div>
+        <p>データ入力・文字起こし・資料作成を外部BPOで受け、内部でAIを活用。ログで作業を可視化。</p>
+      </div>
+      <div class="card">
+        <h3>D. 予見（事前）制作・企画支援</h3>
+        <div class="dept">産業振興／シティプロモーション／広報</div>
+        <p>プロポーザル前段の予見制作・企画・リサーチを低コストで提供。<span class="muted">想定単価：1案件5〜10万円規模／要確定。</span></p>
+      </div>
+    </div>
+    <div class="foot"><span>CanPass ｜ 自治体向けサービス提案 v0.1</span><span class="conf">L2機密・関係者限定</span></div>
+  </section>
+
+  <!-- 6 差別化 -->
+  <section class="slide">
+    <div class="kicker">なぜ CanPass か</div>
+    <h2>差別化ポイント</h2>
+    <ul>
+      <li><span class="em">担い手が当事者</span>：がん・難病と共に働くワーカーが施策を回す＝両立支援の"生きた実装"。政策メッセージ性が高い。</li>
+      <li><span class="em">AIでの品質・スピード・低コスト</span>：作業ログ／品質チェック／タスク配分をAIで標準化。</li>
+      <li><span class="em">企画・予見制作の実績</span>：イベント・企画運営の知見を自治体提案に転用できる。</li>
+      <li><span class="em">柔軟な稼働設計</span>：体調・治療に合わせて回るため、息の長い受託が可能。</li>
+    </ul>
+    <div class="foot"><span>CanPass ｜ 自治体向けサービス提案 v0.1</span><span class="conf">L2機密・関係者限定</span></div>
+  </section>
+
+  <!-- 7 提供スキーム -->
+  <section class="slide">
+    <div class="kicker">イマクリエ連携前提</div>
+    <h2>提供スキーム</h2>
+    <ol class="steps">
+      <li>イマクリエの<span class="tealtext">BtoGテレマ</span>で対象自治体・担当課へアプローチ → アポ獲得<br><span class="muted">（過去アポ率：DX系29〜30%／防災31.5%／教育委員会50.1%）</span></li>
+      <li>アポ先に<span class="em">サービスメニューA〜D</span>を提示し、刺さる切り口で具体提案。</li>
+      <li>CanPassが受託・運用（AI＋在宅ワーカー）。失敗時も全架電ログ・断り理由が残り、次の改善に回せる。</li>
+      <li><span class="em">スモールスタート</span>：共同創業者の地元基盤がある福岡近郊の自治体から着手 → 横展開。</li>
+    </ol>
+    <div class="note"><p>イマクリエ枠：6月末まで有効のキャンペーン（50自治体・25万円／通常50万円の半額）。本格 or 半額スモールは案の完成度で判断。</p></div>
+    <div class="foot"><span>CanPass ｜ 自治体向けサービス提案 v0.1</span><span class="conf">L2機密・関係者限定</span></div>
+  </section>
+
+  <!-- 8 次のステップ -->
+  <section class="slide">
+    <div class="kicker">Next Steps</div>
+    <h2>次のステップ</h2>
+    <ul>
+      <li>本たたきを<span class="em">祝迫会長が色付け</span>（訴求・優先メニューの確定）。</li>
+      <li>髙橋氏（イマクリエ）へ共有し、3名で打ち合わせ（<span class="tealtext">6/16〜18で調整</span>）。</li>
+      <li>「何のメニューを・どの担当課に・どの自治体で」最初に投げ込むかを1〜2本に絞る。</li>
+      <li>イマクリエ6月末キャンペーン枠への可否を連絡（締切：6月末／契約は最遅6/29）。</li>
+      <li>サービス名（アイキャンパス）商標を弁理士へ再確認。</li>
+    </ul>
+    <div class="foot"><span>CanPass ｜ 自治体向けサービス提案 v0.1</span><span class="conf">L2機密・関係者限定</span></div>
+  </section>
+
+  <!-- 9 付記 -->
+  <section class="slide" style="background:#11202b;">
+    <div class="kicker" style="color:#9fe0e6;">付記 ／ 社外提示前に要精査</div>
+    <h2 style="color:#fff;border-color:var(--orange);">取り扱い上の注意</h2>
+    <ul style="color:#dfe9f0;">
+      <li>価格・人数・体制・出口仮説（製薬/保険/医療）・社名/サービス名は<span class="em">未確定</span>。社外提示版では断定表現を避ける。</li>
+      <li>がんサバイバーに関する表現は<span class="tealtext">尊厳・中立</span>を保ち、副作用など個体差の大きい論点は前面に出さない（共通項＝両立・情報・メンタルに寄せる）。</li>
+    </ul>
+    <p style="color:#8aa0b0;margin-top:1.4rem;font-size:1rem;">出典：2026/6/10 経営・B2G戦略MTG議事録、イマクリエBtoGテレマ商談議事録（Circleback）。</p>
+    <div class="foot" style="border-color:#2a3b48;"><span style="color:#7e93a3;">CanPass ｜ 自治体向けサービス提案 v0.1</span><span class="conf">L2機密・関係者限定</span></div>
+  </section>
+
+</div>
+
+<div class="counter"><span id="cur">1</span> / <span id="tot">9</span></div>
+<div class="nav"><button onclick="go(-1)">‹</button><button onclick="go(1)">›</button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  let i=0; document.getElementById('tot').textContent=slides.length;
+  function show(n){slides[i].classList.remove('active');i=(n+slides.length)%slides.length;slides[i].classList.add('active');document.getElementById('cur').textContent=i+1;}
+  function go(d){show(i+d);}
+  document.addEventListener('keydown',e=>{
+    if(['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key)){e.preventDefault();go(1);}
+    if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();go(-1);}
+    if(e.key==='Home')show(0); if(e.key==='End')show(slides.length-1);
+  });
+</script>
+</body>
+</html>
